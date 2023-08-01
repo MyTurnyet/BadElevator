@@ -44,7 +44,7 @@ public class RiderInterfaceTests
             final String punchline = riderInterface.tellPunchline(nextJoke);
 
             //assert
-            assertThat(nextJoke.type).isEqualTo("programmer");
+            assertThat(nextJoke.type).isEqualTo("programming");
             assertThat(setup).isNotEmpty();
             assertThat(setup).isEqualTo(nextJoke.setup);
             assertThat(punchline).isEqualTo(nextJoke.punchline);

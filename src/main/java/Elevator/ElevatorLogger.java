@@ -12,7 +12,7 @@ public class ElevatorLogger
     {
 
         final String pathname = "elevatorlogs_" + LocalDate.now().getYear() + "_" + LocalDate.now().getMonth() + "_" + LocalDate.now().getDayOfMonth() + ".txt";
-        final File file = new File("../../../logs/",pathname);
+        final File file = new File("../logs/",pathname);
         file.mkdirs();
         try
         {

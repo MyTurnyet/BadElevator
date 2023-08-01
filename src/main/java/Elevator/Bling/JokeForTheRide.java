@@ -17,7 +17,7 @@ public class JokeForTheRide
 
     public Joke getJoke(boolean p) throws IOException, InterruptedException
     {
-        OkHttpClient httpClient = new OkHttpClient();
+//        OkHttpClient httpClient = new OkHttpClient();
 
         String url ="";
         if(p==true){
@@ -26,12 +26,15 @@ public class JokeForTheRide
             url ="https://elevator-jokes.herokuapp.com/jokes/random";
         }
 
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-        Response response = httpClient.newCall(request).execute();
+//        Request request = new Request.Builder()
+//                .url(url)
+//                .build();
+//        Response response = httpClient.newCall(request).execute();
         ObjectMapper om = new ObjectMapper();
-        Joke joke = om.readValue(response.body().string().toString(), Joke.class);
+        String jokeType = p?"programming":"general";
+        final String jokeJson = "{\"id\":\"1\",\"type\":\"%s\",\"setup\":\"some setup line\",\"punchline\":\"something funny!\"}".formatted(jokeType);
+//        Joke joke = om.readValue(response.body().string().toString(), Joke.class);
+        Joke joke = om.readValue(jokeJson, Joke.class);
         ElevatorLogger.Info(joke.setup);
         ElevatorLogger.Info(joke.punchline);
         return joke;

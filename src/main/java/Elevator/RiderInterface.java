@@ -7,6 +7,15 @@ import java.io.IOException;
 
 public class RiderInterface
 {
+    private final String jokeType;
+
+    public RiderInterface(){
+        this("general");
+    }
+    public RiderInterface(String jokeType){
+
+        this.jokeType = jokeType;
+    }
     public String tellSetup(Joke nextJoke)
     {
         return nextJoke.setup;
@@ -16,9 +25,9 @@ public class RiderInterface
     {
         final Joke joke = new JokeForTheRide().getJoke(b);
         ElevatorLogger.Info("Got joke type: "+ joke.type);
-        if(joke.type!="programming"&&b==true){
-            getNextJoke(true);
-        }
+//        if(joke.type!="programming"&&b==true){
+//            getNextJoke(true);
+//        }
         return joke;
     }
 
