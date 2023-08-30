@@ -39,7 +39,8 @@ public class Elevator
     {
         if (expectedFloor < floor) return "Below";
         if (expectedFloor > floor) return "Above";
-        return "Same";
+        if (expectedFloor == floor) return "Same";
+        return "";
     }
 
     public boolean open()
@@ -77,7 +78,7 @@ public class Elevator
             {
                 if (callRequset.number() == this.floor)
                 {
-                    ElevatorLogger.Info("fulfilled request");
+                    ElevatorLogger.Info("fulfilled");
                     return this.open() == true;
                 } else
                 {
@@ -98,7 +99,7 @@ public class Elevator
 
     public void doors(boolean state)
     {
-        this.open = state;
+        if (state) open = !open;
     }
 
     public boolean hasFulfilled(ButtonRequest buttonRequest)

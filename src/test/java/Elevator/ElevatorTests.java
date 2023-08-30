@@ -1,6 +1,5 @@
 package Elevator;
 
-import Elevator.Elevator;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -92,7 +91,7 @@ public class ElevatorTests
         }
 
         @Test
-        public void should_fulfillCallRequest()
+        public void should_fulfillRequest1()
         {
             //assign
             final CallRequset callRequset = new CallRequset("Up", 5);
@@ -107,7 +106,7 @@ public class ElevatorTests
         }
 
         @Test
-        public void should_not_fulfillCallRequest()
+        public void should_not_fulfillRequest1()
         {
             //assign
             final CallRequset callRequset = new CallRequset("down", 3);
@@ -123,7 +122,7 @@ public class ElevatorTests
         }
 
         @Test
-        public void should_not_fulfillButtonRequest()
+        public void should_not_fulfillRequest2()
         {
             //assign
             final ButtonRequest buttonRequest = new ButtonRequest(3);
@@ -139,7 +138,7 @@ public class ElevatorTests
         }
 
         @Test
-        public void should_fulfillButtonRequest()
+        public void should_fulfillRequest()
         {
             //assign
             final ButtonRequest buttonRequest = new ButtonRequest(3);
@@ -152,6 +151,22 @@ public class ElevatorTests
             //assert
             final boolean fulfilled = elevator.hasFulfilled(buttonRequest);
             assertThat(fulfilled).isFalse();
+        }
+
+        @Test
+        void should_doors_be_open()
+        {
+            final Elevator elevator = new Elevator("Up", 0, false);
+            elevator.doors(true);
+            assertThat(elevator.open()).isTrue();
+        }
+
+        @Test
+        void should_doors_be_false()
+        {
+            final Elevator elevator = new Elevator("Up", 0, false);
+            elevator.doors(false);
+            assertThat(!elevator.open()).isTrue();
         }
     }
 }
